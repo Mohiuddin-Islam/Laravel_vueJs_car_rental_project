@@ -35,13 +35,16 @@
 
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
 
+    
+        <!-- App favicon -->
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+
     <!-- App css -->
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- Icons -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
-        <!-- Scripts -->
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
@@ -76,15 +79,16 @@
         <!--<< Main.js >>-->
         <script src="{{ asset('assets/js/main.js')}}"></script>
 
-        <script src="{{ asset('assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/node-waves/waves.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
-        <script src="{{ asset('assets/libs/feather-icons/feather.min.js')}}"></script>
-    
+        <!-- Vendor -->
+        <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+        <script src="{{asset('assets/libs/waypoints/lib/jquery.waypoints.min.js')}}"></script>
+        <script src="{{asset('assets/libs/jquery.counterup/jquery.counterup.min.js')}}"></script>
+        <script src="{{asset('assets/libs/feather-icons/feather.min.js')}}"></script>
+
         <!-- App js-->
-        <script src="{{ asset('assets/js/app.js')}}"></script>
+        <script src="{{asset('assets/js/app.js')}}"></script>
     </body>
 </html>

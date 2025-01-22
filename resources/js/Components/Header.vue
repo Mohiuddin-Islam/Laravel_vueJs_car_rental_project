@@ -1,14 +1,12 @@
 <template>
     <header class="header-section">
-        <div class="header-top-section style-two">
+        <div class="header-top-section style-two" v-if="user">
             <div class="container-fluid">
                 <div class="header-top-wrapper style-2">
                     <ul class="contact-list">
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <a href="mailto:info@example.com" class="link">
-                                {{ auth.user ? auth.user.name : 'Guest' }}
-                            </a>
+                            <a href="mailto:info@example.com" class="link"></a>
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
@@ -17,23 +15,13 @@
                     </ul>
                     <div class="header-top-right">
                         <ul class="top-list">
-                            <li v-if="!auth.isCustomer">
-                                <Link :href="route('customer.login')" style="color:rgb(27, 184, 27)">Login</Link>
-                            </li>
-                            <li v-if="!auth.isCustomer">
-                                <Link :href="route('customer.register')" style="color:rgb(44, 150, 211)">Registration</Link>
-                            </li>
-                            <li v-if="auth.isCustomer">
+                            <li>
                                 <form :action="route('myprofile')" method="get">
                                     <button type="submit" class="btn btn-sm btn-success">My Profile</button>
                                 </form>
                             </li>
-                            <li v-if="auth.isCustomer">
-                                <form :action="route('customer.logout')" method="post">
-                                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"
-                                        style="color:rgb(235, 24, 24)">LogOut
-                                    </a>
-                                </form>
+                            <li>
+                                <Link href="#" @click.prevent="logout" style="color:rgb(235, 24, 24)">Logout</Link>
                             </li>
                         </ul>
                         <div class="social-icon d-flex align-items-center">
@@ -46,6 +34,40 @@
                 </div>
             </div>
         </div>
+
+        <div class="header-top-section style-two" v-else>
+            <div class="container-fluid">
+                <div class="header-top-wrapper style-2">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@example.com" class="link"></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            54 Inner Circular Road, Purana Paltan. Dhaka-Bangladesh
+                        </li>
+                    </ul>
+                    <div class="header-top-right">
+                        <ul class="top-list">
+                            <li>
+                                <Link :href="route('customer.login')" style="color:rgb(27, 184, 27)">Login</Link>
+                            </li>
+                            <li>
+                                <Link :href="route('customer.register')" style="color:rgb(44, 150, 211)">Registration</Link>
+                            </li>
+                        </ul>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="header-sticky" class="header-3">
             <div class="container-fluid">
                 <div class="mega-menu-wrapper">
@@ -112,11 +134,22 @@
     </header>
 </template>
 
-<script setup>
-import { Link, usePage } from '@inertiajs/vue3';
 
-const page = usePage();
-const auth = page.props.auth;
+<script setup>
+import { computed } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
+import { Inertia } from '@inertiajs/inertia';
+
+const { user } = usePage().props;
+console.log('User:', user);
+
+const isLoggedIn = computed(() => !!user);
+
+const logout = () => {
+    Inertia.post(route('customer.logout'));
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

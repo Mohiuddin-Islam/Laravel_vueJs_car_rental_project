@@ -64,48 +64,53 @@
 
                                         <div class="pt-0">
                                             <form @submit.prevent="submit" enctype="multipart/form-data">
-                
-                <div class="form-group mb-3">
-                    <label for="emailaddress" class="form-label">Email Address</label>
-                    <input v-model="form.email" class="form-control" type="email" id="emailaddress"
-                        placeholder="Enter your Email">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input v-model="form.password" class="form-control" type="password" id="password"
-                        placeholder="Enter your Password">
-                </div>
-                
-                
-                <div class="form-group d-flex mb-3">
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input v-model="form.agree" type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">
-                                I agree to the <a href="#" class="text-primary fw-medium">Terms and Conditions</a>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-0 row">
-                    <div class="col-12">
-                        <div class="d-grid">
-                            <button class="btn btn-primary" type="submit">Login</button><br>
-                        </div>
-                    </div>
-                </div>
-                </form>
 
-                <div class="text-center text-muted mb-4">
-                <p class="mb-0">Don't have an account ?<a class='text-primary ms-2 fw-medium' href='/customer/register'>Sing up</a></p>
+                                                <div class="form-group mb-3">
+                                                    <label for="emailaddress" class="form-label">Email Address</label>
+                                                    <input v-model="form.email" class="form-control" type="email"
+                                                        id="emailaddress" placeholder="Enter your Email">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="password" class="form-label">Password</label>
+                                                    <input v-model="form.password" class="form-control" type="password"
+                                                        id="password" placeholder="Enter your Password">
+                                                </div>
+
+
+                                                <div class="form-group d-flex mb-3">
+                                                    <div class="col-12">
+                                                        <div class="form-check">
+                                                            <input v-model="form.agree" type="checkbox"
+                                                                class="form-check-input" id="checkbox-signin">
+                                                            <label class="form-check-label" for="checkbox-signin">
+                                                                I agree to the <a href="#"
+                                                                    class="text-primary fw-medium">Terms and
+                                                                    Conditions</a>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0 row">
+                                                    <div class="col-12">
+                                                        <div class="d-grid">
+                                                            <button class="btn btn-primary" type="submit">Login</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form><br>
+
+                                            <div class="text-center text-muted mb-4">
+                                                <p class="mb-0">Don't have an account ?<a
+                                                        class='text-primary ms-2 fw-medium'
+                                                        href='/customer/register'>Sign up</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-    </div>
-</div>
 
                 <div class="col-xl-7">
                     <div class="account-page-bg p-md-5 p-4">
@@ -126,20 +131,20 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-  
-  email: "",
-  password: "",
+
+    email: "",
+    password: "",
 
 });
 
 const errors = ref({});
 
 const submit = () => {
-  form.post(route("customer.login"), {
-    onError: (error) => {
-      errors.value = error;
-    },
-  });
+    form.post(route("customer.login"), {
+        onError: (error) => {
+            errors.value = error;
+        },
+    });
 };
 
 </script>

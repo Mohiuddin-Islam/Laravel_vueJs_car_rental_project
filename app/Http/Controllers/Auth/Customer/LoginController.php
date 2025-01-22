@@ -39,17 +39,9 @@ class LoginController extends Controller
         }
     }
 
-
-
-
-    public function logout(Request $request): RedirectResponse
-    {
+    public function logout() {
         Auth::guard('customer')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
+        //Auth::logout();
         return redirect()->route('home');
     }
 

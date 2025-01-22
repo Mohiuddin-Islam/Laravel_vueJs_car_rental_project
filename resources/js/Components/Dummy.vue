@@ -1,79 +1,92 @@
 <template>
-    <div :style="backgroundStyle">
-        <Header />
-        <div class="container my-4">
-            <form @submit.prevent="submit" enctype="multipart/form-data">
-                <div class="form-group mb-3">
-                    <label for="username" class="form-label">UserName</label>
-                    <input v-model="form.name" class="form-control" type="text" id="username"
-                        placeholder="Enter your Username">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="emailaddress" class="form-label">Email Address</label>
-                    <input v-model="form.email" class="form-control" type="email" id="emailaddress"
-                        placeholder="Enter your Email">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input v-model="form.password" class="form-control" type="password" id="password"
-                        placeholder="Enter your Password">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm Password</label>
-                    <input v-model="form.password_confirmation" class="form-control" type="password" id="new-password"
-                        placeholder="Enter Confirm Password">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input v-model="form.phone" class="form-control" type="text" id="phone"
-                        placeholder="Enter Phone Number">
-                </div>
-                <div class="form-group d-flex mb-3">
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input v-model="form.agree" type="checkbox" class="form-check-input" id="checkbox-signin">
-                            <label class="form-check-label" for="checkbox-signin">
-                                I agree to the <a href="#" class="text-primary fw-medium">Terms and Conditions</a>
-                            </label>
+    <header class="header-section">
+        <div class="header-top-section style-two" v-if="user">
+            <div class="container-fluid">
+                <div class="header-top-wrapper style-2">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@example.com" class="link"></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            54 Inner Circular Road, Purana Paltan. Dhaka-Bangladesh
+                        </li>
+                    </ul>
+                    <div class="header-top-right">
+                        <ul class="top-list">
+                            <li>
+                                <form :action="route('myprofile')" method="get">
+                                    <button type="submit" class="btn btn-sm btn-success">My Profile</button>
+                                </form>
+                            </li>
+                            <li>
+                                <!-- <form :action="route('customer.logout')" method="post">
+                                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" style="color:rgb(235, 24, 24)">LogOut</a>
+                                </form> -->
+                                <Link :href="route('customer.logout')">Logout</Link>
+                            </li>
+                        </ul>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mb-0 row">
-                    <div class="col-12">
-                        <div class="d-grid">
-                            <button class="btn btn-primary" type="submit">Register</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-        <Footer />
-    </div>
+
+        <div class="header-top-section style-two" v-else>
+            <div class="container-fluid">
+                <div class="header-top-wrapper style-2">
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@example.com" class="link"></a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            54 Inner Circular Road, Purana Paltan. Dhaka-Bangladesh
+                        </li>
+                    </ul>
+                    <div class="header-top-right">
+                        <ul class="top-list">
+                            <li>
+                                <Link :href="route('customer.login')" style="color:rgb(27, 184, 27)">Login</Link>
+                            </li>
+                            <li>
+                                <Link :href="route('customer.register')" style="color:rgb(44, 150, 211)">Registration</Link>
+                            </li>
+                        </ul>
+                        <div class="social-icon d-flex align-items-center">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </header>
 </template>
 
 <script setup>
-import Header from '@/Components/Header.vue';
-import Footer from '@/Components/Footer.vue';
-import { Link, useForm, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
 
-const form = useForm({
-    name: "",
-    email: "",
-    password: "",
-    password_confirmation: "",
-});
+// Log the user prop to the console to verify it's being received correctly
+const { user } = usePage().props;
+console.log('User:', user);
 
-const submit = () => {
-    form.post(route("customer.register"));
-};
-
-const backgroundStyle = {
-    backgroundImage: url("images/hero/bg4.jpg"),
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-};
+// Create a computed property to check if the user is logged in
+const isLoggedIn = computed(() => !!user);
 </script>
 
-<style scoped>
-/* Add any custom styles here */
+<style lang="scss" scoped>
+
 </style>

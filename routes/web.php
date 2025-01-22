@@ -145,7 +145,6 @@ Route::middleware('guest:customer')->prefix('customer')->group(function () {
 Route::middleware('auth:customer')->prefix('customer')->group(function () {
 
     Route::post('logout', [App\Http\Controllers\Auth\Customer\LoginController::class, 'logout'])->name('customer.logout');
-    // Route::view('/dashboard','frontend.customer_dashboard');
 
     Route::get('/booking', [BookingController::class, 'create'])->name('book.create');
     Route::post('/booking', [BookingController::class, 'store'])->name('book.store');

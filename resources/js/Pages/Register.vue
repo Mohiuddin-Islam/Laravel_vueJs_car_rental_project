@@ -102,17 +102,17 @@
                 <div class="form-group mb-0 row">
                     <div class="col-12">
                         <div class="d-grid">
-                            <button class="btn btn-primary" type="submit">Register</button><br>
+                            <button class="btn btn-primary" type="submit">Register</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            </form><br>
 
                                             <div class="text-center text-muted mb-4">
                                                 <p class="mb-0">
                                                     Already have an account?
                                                     <a class="text-primary ms-2 fw-medium" href="/customer/login">Login
-                                                        here</a>
+                                                        Here</a>
                                                 </p>
                                             </div>
                                         </div>
