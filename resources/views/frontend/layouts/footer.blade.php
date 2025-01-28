@@ -31,32 +31,25 @@
                             <h4>Contact</h4>
                         </div>
                         <ul class="list-items">
-                            <li>
-                                <a href="{{route('about')}}"> 
-                                    About Us
-                                </a>
+                                    <li class="has-dropdown active menu-thumb">
+                                        <a href="{{ route('home') }}">
+                                            Home </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('about') }}">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('carlist') }}">CarList</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('faq') }}">Faq's</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('f_contact') }}">Contact</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="{{route('car')}}">
-                                    New Cars
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('blog')}}">
-                                    Latest News
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('gallery')}}">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route('contact_us')}}">
-                                    Contact
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">

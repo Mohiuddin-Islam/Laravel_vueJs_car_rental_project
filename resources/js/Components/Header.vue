@@ -16,12 +16,14 @@
                     <div class="header-top-right">
                         <ul class="top-list">
                             <li>
-                                <form :action="route('myprofile')" method="get">
+                                <!-- <form :action="route('myprofile')" method="get">
                                     <button type="submit" class="btn btn-sm btn-success">My Profile</button>
-                                </form>
+                                </form> -->
+
+                                <a :href="route('myprofile')" class="btn btn-sm btn-primary" style="color: white;">My Profile</a>
                             </li>
                             <li>
-                                <Link href="#" @click.prevent="logout" style="color:rgb(235, 24, 24)">Logout</Link>
+                                <Link href="#" @click.prevent="logout" style="color:rgb(235, 24, 24)">LogOut</Link>
                             </li>
                         </ul>
                         <div class="social-icon d-flex align-items-center">
@@ -139,6 +141,7 @@
 import { computed } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Inertia } from '@inertiajs/inertia';
+import { route } from 'ziggy-js';
 
 const { user } = usePage().props;
 console.log('User:', user);

@@ -12,13 +12,6 @@ class InvoiceController extends Controller
     public function invoice($inid)
     {
     
-    // $data = Payment::select('payments.*', 'bookings.*', 'customers.*')
-    //     ->join('bookings', 'payments.booking_id', '=', 'bookings.id')
-    //     ->join('customers', 'customers.id', '=', 'bookings.customer_id')
-    //     ->where('payments.id', $iid)
-    //     ->first();
-
-    //dd($data); // Check the output
 
     $data = Payment::find($inid);
     //dd($data);

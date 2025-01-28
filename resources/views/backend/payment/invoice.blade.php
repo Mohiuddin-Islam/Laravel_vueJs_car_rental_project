@@ -135,7 +135,7 @@
                     <li>Purana Paltan, Scout Market</li>
                     <li>+8801567980553 | contact.car4rent@gmail.com</li>
                 </ul>
-                <h2>Client</h2>
+                <h2>Customer</h2>
                 <ul>
                     <li>{{$data->booking->customer->name}}</li>
                     <li>{{$data->booking->customer->email}}</li>

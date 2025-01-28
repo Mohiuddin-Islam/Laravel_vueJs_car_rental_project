@@ -18,7 +18,7 @@
                             Cars
                         </li>
                     </ul>
-                    <h1 class="wow fadeInUp" data-wow-delay=".5s">Car Style</h1>
+                    <h1 class="wow fadeInUp" data-wow-delay=".5s">Car List</h1>
                 </div>
             </div>
         </div>

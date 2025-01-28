@@ -80,37 +80,18 @@
                                         <li class="has-dropdown active menu-thumb">
                                             <a href="{{ route('home') }}">
                                                 Home </a>
-
                                         </li>
                                         <li>
                                             <a href="{{ route('about') }}">About Us</a>
                                         </li>
-                                        <li class="has-dropdown">
-                                            <a href="{{ route('gallery') }}">
-                                                Feature
-                                                <i class="fas fa-angle-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-                                                <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                                                <li><a href="{{ route('faq') }}">Faq's</a></li>
-                                            </ul>
+                                        <li>
+                                            <a href="{{ route('carlist') }}">CarList</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('car') }}">CarList</a>
-
+                                            <a href="{{ route('faq') }}">Faq's</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('blog') }}">
-                                                Blog
-                                                <i class="fas fa-angle-down"></i>
-                                            </a>
-                                            <ul class="submenu">
-
-                                                <li><a href="{{ route('blog_details') }}">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('contact_us') }}">Contact</a>
+                                            <a href="{{ route('f_contact') }}">Contact</a>
                                         </li>
                                     </ul>
                                 </nav>
