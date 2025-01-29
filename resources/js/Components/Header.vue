@@ -16,10 +16,6 @@
                     <div class="header-top-right">
                         <ul class="top-list">
                             <li>
-                                <!-- <form :action="route('myprofile')" method="get">
-                                    <button type="submit" class="btn btn-sm btn-success">My Profile</button>
-                                </form> -->
-
                                 <a :href="route('myprofile')" class="btn btn-sm btn-primary" style="color: white;">My Profile</a>
                             </li>
                             <li>

@@ -18,7 +18,7 @@
                         Cars
                     </li>
                 </ul>
-                <h1 class="wow fadeInUp" data-wow-delay=".5s">Single Car</h1>
+                <h1 class="wow fadeInUp" data-wow-delay=".5s">Booking A Car</h1>
             </div>
         </div>
     </div>

@@ -22,14 +22,6 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    
-    // public function create()
-    // {
-    //     $drivers = Driver::all();
-    //     $carlists = CarList::all();
-    //     return view('frontend.booking', compact('carlists', 'drivers'));
-    // }
-
 
     public function create()
     {
@@ -42,58 +34,54 @@ class BookingController extends Controller
     ]);
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'carlist' => 'required',
-        'driver' => 'required',
-        'pick_up_date' => 'required|date',
-        'drop_off_date' => 'required|date|after_or_equal:pick_up_date',
-    ]);
+    {
+        $request->validate([
+            'carlist' => 'required',
+            'driver' => 'required',
+            'pick_up_date' => 'required|date',
+            'drop_off_date' => 'required|date|after_or_equal:pick_up_date',
+        ]);
 
-    $carId = $request->carlist;
-    $pickUpDate = Carbon::parse($request->pick_up_date);
-    $dropOffDate = Carbon::parse($request->drop_off_date);
+        $carId = $request->carlist;
+        $pickUpDate = Carbon::parse($request->pick_up_date);
+        $dropOffDate = Carbon::parse($request->drop_off_date);
 
-    // Check for conflicting bookings
-    $conflictingBookings = Booking::where('car_list_id', $carId)
-        ->where(function ($query) use ($pickUpDate, $dropOffDate) {
-            $query->whereBetween('pick_up_date', [$pickUpDate, $dropOffDate])
-                ->orWhereBetween('drop_off_date', [$pickUpDate, $dropOffDate])
-                ->orWhere(function ($query) use ($pickUpDate, $dropOffDate) {
+        $conflictingBookings = Booking::where('car_list_id', $carId)
+                    ->where(function($query) use ($pickUpDate, $dropOffDate) {
+                    $query->whereBetween('pick_up_date', [$pickUpDate, $dropOffDate])
+                    ->orWhereBetween('drop_off_date', [$pickUpDate, $dropOffDate])
+                    ->orWhere(function($query) use ($pickUpDate, $dropOffDate) {
                     $query->where('pick_up_date', '<=', $pickUpDate)
-                        ->where('drop_off_date', '>=', $dropOffDate);
-                });
-        })
-        ->exists();
+                    ->where('drop_off_date', '>=', $dropOffDate);
+            });
+            })
+            ->exists();
 
-    if ($conflictingBookings) {
-        return redirect()->back()->with('errorMsg', 'The selected car is already booked for the chosen dates.');
+        if ($conflictingBookings) {
+            return redirect()->back()->with('msg', 'The selected car is already booked for the chosen dates.');
+        }
+
+        $carlist = CarList::find($carId);
+        $price = $carlist->price_per_day;
+        $days = $pickUpDate->diffInDays($dropOffDate);
+        $amount = $price * $days;
+
+        Booking::create([
+            'customer_id' => Auth::user()->id,
+            'car_list_id' => $carId,
+            'driver_id' => $request->driver,
+            'pick_up_date' => $pickUpDate,
+            'drop_off_date' => $dropOffDate,
+            'amount' => $amount,
+            'status' => 'pending',
+        ]);
+
+        return redirect()->back()->with('msg', 'Successfully Booking Done');
     }
-
-    $carlist = CarList::find($carId);
-    $price = $carlist->price_per_day;
-
-    $days = $pickUpDate->diffInDays($dropOffDate);
-    $amount = $price * $days;
-
-    Booking::create([
-        'customer_id' => Auth::user()->id,
-        'car_list_id' => $carId,
-        'driver_id' => $request->driver,
-        'pick_up_date' => $pickUpDate,
-        'drop_off_date' => $dropOffDate,
-        'amount' => $amount,
-        'status' => 'pending',
-    ]);
-
-    return redirect()->back()->with('msg', 'Booking successfully done!');
-}
 
 
     /**

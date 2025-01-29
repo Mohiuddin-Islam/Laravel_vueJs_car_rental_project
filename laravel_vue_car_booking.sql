@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2025 at 06:50 PM
+-- Generation Time: Jan 29, 2025 at 04:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -68,9 +68,8 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `customer_id`, `car_list_id`, `driver_id`, `pick_up_date`, `drop_off_date`, `amount`, `status`, `created_at`, `updated_at`) VALUES
-(4, 1, 12, 1, '2025-01-17', '2025-01-19', 12000, 'confirm', '2025-01-16 06:43:53', '2025-01-16 06:46:47'),
-(5, 1, 13, 3, '2025-01-18', '2025-01-20', 24000, 'confirm', '2025-01-16 06:45:33', '2025-01-16 06:46:45'),
-(6, 2, 14, 6, '2025-01-17', '2025-01-20', 25500, 'confirm', '2025-01-16 06:48:51', '2025-01-16 06:50:08');
+(38, 5, 11, 2, '2025-01-29', '2025-01-31', 17000, 'pending', '2025-01-28 21:27:58', '2025-01-28 21:27:58'),
+(39, 4, 14, 3, '2025-01-29', '2025-01-30', 8500, 'pending', '2025-01-28 21:28:49', '2025-01-28 21:28:49');
 
 -- --------------------------------------------------------
 
@@ -155,7 +154,13 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `phone`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'Mohiuddin', 'mohiuddincr7@gmail', 'Need Car!!!', '01752437955', 'What type of car there??', '2025-01-14 12:21:34', '2025-01-14 12:21:34');
+(1, 'Mohiuddin', 'mohiuddincr7@gmail', 'Need Car!!!', '01752437955', 'What type of car there??', '2025-01-14 12:21:34', '2025-01-14 12:21:34'),
+(8, 'Nazrul', 'nazrul@gmail.com', 'Good', '0175896548', 'What a show!!!', '2025-01-18 12:46:06', '2025-01-18 12:46:06'),
+(10, 'Laboris cum quisquam', 'Numquam cupidatat an', 'Irure sed ducimus d', 'Sint eum ea cum recu', 'Nobis molestias nihi', '2025-01-18 21:13:18', '2025-01-18 21:13:18'),
+(11, 'Velit omnis cum amet', 'Doloremque exercitat', 'Odit duis eu atque m', 'Veniam quis tempori', 'Dolor provident dol', '2025-01-18 21:56:42', '2025-01-18 21:56:42'),
+(12, 'Maxime ex et veniam', 'Dicta amet eaque au', 'Maxime et quis omnis', 'Magni aut et eos off', 'Cumque consequuntur', '2025-01-19 00:09:43', '2025-01-19 00:09:43'),
+(13, 'Debitis magni sed su', 'Minim excepteur haru', 'Error minim dolore h', 'Et maxime necessitat', 'Voluptatem aut assum', '2025-01-19 02:26:03', '2025-01-19 02:26:03'),
+(14, 'Cillum ipsum anim am', 'Dolores illo sapient', 'Et aut tempore sit', 'Molestiae temporibus', 'Adipisicing aut rati', '2025-01-19 02:31:07', '2025-01-19 02:31:07');
 
 -- --------------------------------------------------------
 
@@ -180,7 +185,10 @@ CREATE TABLE `customers` (
 
 INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Jamil Hossain', 'jamil@gmail.com', '$2y$10$o9IiOJS3o1UXD7R5YrlnjO8W/f.o6KVEUL9Jg5tIoviD6r5LXMktO', '01567980553', NULL, '2025-01-14 11:22:03', '2025-01-14 11:22:03'),
-(2, 'Mahin Ahmed', 'mahin@gmail.com', '$2y$10$LsfMcWR0LIx1AQ2FGkMo8uVpV4kDbZgy89s0j4dFGOrfhwQGZcBhu', '01638563202', NULL, '2025-01-14 11:38:57', '2025-01-14 11:38:57');
+(4, 'Habib', 'habib@gmail.com', '$2y$10$63jAOxJB71K0LYN5mTU2AOqhH172N23yjCi5cIjYLxGRZtbuOK4Bi', '01567980553', NULL, '2025-01-20 07:29:17', '2025-01-20 07:29:17'),
+(5, 'Sakib', 'sakib@gmail.com', '$2y$10$mebl5xvP8acBB2ukfUZVSexyDzhKNdibqHosGFxB98eho74iPSRca', '01638563203', NULL, '2025-01-22 10:23:22', '2025-01-22 10:23:22'),
+(6, 'Abir', 'abir@gmail.com', '$2y$10$A.bN4zp96MwT6O2kvbus8e50BGzQ/Byw5198CqrZZnqgvD7OzhhVm', '01568945632', NULL, '2025-01-25 00:02:30', '2025-01-25 00:02:30'),
+(7, 'Rakib', 'rakib@gmail.com', '$2y$10$IcFoRTIMTTT3xUNLAPUxQuNkITCl8oAxD3izJeFHEt30TCKQdsa7G', '01789645630', NULL, '2025-01-25 01:55:17', '2025-01-25 01:55:17');
 
 -- --------------------------------------------------------
 
@@ -283,15 +291,6 @@ CREATE TABLE `payments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `payments`
---
-
-INSERT INTO `payments` (`id`, `booking_id`, `trxn_id`, `method`, `amount`, `created_at`, `updated_at`) VALUES
-(4, 4, 'adsvdbf sDfggfbn', 'bkash', 12000, '2025-01-16 06:44:18', '2025-01-16 06:44:18'),
-(5, 5, 'fdsfbdgsnf', 'rocket', 24000, '2025-01-16 06:45:59', '2025-01-16 06:45:59'),
-(6, 6, 'dfgdb afgeghd', 'bkash', 25500, '2025-01-16 06:49:45', '2025-01-16 06:49:45');
 
 -- --------------------------------------------------------
 
@@ -432,7 +431,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `car_lists`
@@ -450,13 +449,13 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `drivers`
@@ -480,7 +479,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
